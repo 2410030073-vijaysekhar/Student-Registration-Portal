@@ -1,0 +1,259 @@
+:root {
+  --theme-color: #4CAF50;
+  --bg-gradient: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: var(--bg-gradient);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.form-container {
+  max-width: 1000px;
+  width: 100%;
+  margin: 30px auto;
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.8rem;
+  color: var(--theme-color);
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #d1d1d1;
+  margin-bottom: 20px;
+}
+
+.form-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.form-nav ul {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  list-style: none;
+}
+
+.form-nav li {
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.form-nav li.active {
+  background: var(--theme-color);
+  color: #fff;
+}
+
+.form-nav li:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+form {
+  display: grid;
+  gap: 25px;
+}
+
+.form-step {
+  display: none;
+  animation: slideIn 0.5s ease forwards;
+}
+
+.form-step.active {
+  display: block;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+fieldset {
+  border: 2px solid var(--theme-color);
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+legend {
+  padding: 0 15px;
+  font-weight: bold;
+  color: var(--theme-color);
+  font-size: 1.2rem;
+}
+
+label {
+  display: block;
+  margin: 12px 0 6px;
+  font-size: 1rem;
+  color: #e0e0e0;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  border: 2px solid var(--theme-color);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 10px var(--theme-color);
+}
+
+input.error {
+  border: 2px solid #e74c3c;
+}
+
+.gender-section, .skills {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.grid-three {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  min-height: 20px;
+}
+
+.next-btn, .prev-btn, .submit-btn {
+  background: var(--theme-color);
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 10px 5px;
+}
+
+.prev-btn {
+  background: #555;
+}
+
+.next-btn:hover, .submit-btn:hover {
+  background: #fff;
+  color: var(--theme-color);
+  box-shadow: 0 0 15px var(--theme-color);
+}
+
+.prev-btn:hover {
+  background: #777;
+}
+
+progress {
+  width: 100%;
+  height: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #333;
+}
+
+progress::-webkit-progress-bar {
+  background: #333;
+}
+
+progress::-webkit-progress-value {
+  background: var(--theme-color);
+  transition: all 0.5s ease;
+}
+
+.range-value {
+  display: inline-block;
+  margin-left: 10px;
+  font-weight: bold;
+  color: var(--theme-color);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .grid-three {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .form-container {
+    padding: 20px;
+  }
+  
+  .grid-three {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .form-nav li {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .subtitle {
+    font-size: 0.9rem;
+  }
+  
+  input, select, textarea {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+  
+  .next-btn, .prev-btn, .submit-btn {
+    font-size: 1rem;
+    padding: 10px;
+  }
+}

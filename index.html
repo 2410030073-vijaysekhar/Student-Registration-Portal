@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Multi-Step Student Registration</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="form-container">
+    <h1>Student Registration Portal</h1>
+    <p class="subtitle">Embark on your academic journey</p>
+    
+    <!-- Progress Navigation -->
+    <nav class="form-nav">
+      <ul>
+        <li class="active" data-step="1">Personal Info</li>
+        <li data-step="2">Academic Details</li>
+        <li data-step="3">Address</li>
+        <li data-step="4">Preferences</li>
+      </ul>
+    </nav>
+    
+    <form id="registrationForm" novalidate>
+      <progress id="progressBar" value="25" max="100"></progress>
+      
+      <!-- Step 1: Personal Info -->
+      <div class="form-step active" data-step="1">
+        <fieldset>
+          <legend>Personal Information</legend>
+          
+          <label for="fullname">Full Name:</label>
+          <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required autofocus>
+          
+          <label for="email">Email Address:</label>
+          <input type="email" id="email" name="email" placeholder="example@email.com" required>
+          
+          <label for="phone">Phone Number:</label>
+          <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="10 digits only" required>
+          
+          <label for="dob">Date of Birth:</label>
+          <input type="date" id="dob" name="dob" required>
+          
+          <div class="gender-section">
+            <span>Gender:</span>
+            <label><input type="radio" name="gender" value="male" required> Male</label>
+            <label><input type="radio" name="gender" value="female"> Female</label>
+            <label><input type="radio" name="gender" value="other"> Other</label>
+          </div>
+          
+          <label for="profilePic">Profile Picture:</label>
+          <input type="file" id="profilePic" name="profilePic" accept="image/*">
+          
+          <div class="error-message" id="personalError"></div>
+        </fieldset>
+        <button type="button" class="next-btn">Next</button>
+      </div>
+      
+      <!-- Step 2: Academic Info -->
+      <div class="form-step" data-step="2">
+        <fieldset>
+          <legend>Academic Information</legend>
+          
+          <label for="department">Department:</label>
+          <select id="department" name="department" required>
+            <option value="">Select Department</option>
+            <option value="cse">Computer Science</option>
+            <option value="ece">Electronics</option>
+            <option value="mech">Mechanical</option>
+            <option value="civil">Civil</option>
+            <option value="bio">Biotechnology</option>
+          </select>
+          
+          <label for="year">Year of Study:</label>
+          <select id="year" name="year" required>
+            <option value="">Select Year</option>
+            <option value="1">1st Year</option>
+            <option value="2">2nd Year</option>
+            <option value="3">3rd Year</option>
+            <option value="4">4th Year</option>
+          </select>
+          
+          <label for="enroll">Enrollment Number:</label>
+          <input type="text" id="enroll" name="enroll" pattern="[0-9]{8}" placeholder="8-digit number" required>
+          
+          <label for="cgpa">CGPA:</label>
+          <input type="number" id="cgpa" name="cgpa" min="0" max="10" step="0.01" placeholder="0.00 - 10.00" required>
+          
+          <div class="skills">
+            <span>Skills:</span>
+            <label><input type="checkbox" name="skills" value="JavaScript"> JavaScript</label>
+            <label><input type="checkbox" name="skills" value="Python"> Python</label>
+            <label><input type="checkbox" name="skills" value="Java"> Java</label>
+            <label><input type="checkbox" name="skills" value="C++"> C++</label>
+            <label><input type="checkbox" name="skills" value="SQL"> SQL</label>
+          </div>
+          
+          <label for="rating">Coding Skills (1-10):</label>
+          <input type="range" id="rating" name="rating" min="1" max="10" value="5">
+          <span class="range-value">5</span>
+          
+          <div class="error-message" id="academicError"></div>
+        </fieldset>
+        <button type="button" class="prev-btn">Previous</button>
+        <button type="button" class="next-btn">Next</button>
+      </div>
+      
+      <!-- Step 3: Address -->
+      <div class="form-step" data-step="3">
+        <fieldset>
+          <legend>Address & Contact</legend>
+          
+          <label for="address">Full Address:</label>
+          <textarea id="address" name="address" rows="4" placeholder="Enter your full address" required></textarea>
+          
+          <div class="grid-three">
+            <input type="text" name="city" placeholder="City" required>
+            <input type="text" name="state" placeholder="State" required>
+            <input type="text" name="country" placeholder="Country" required>
+          </div>
+          
+          <label for="zip">ZIP Code:</label>
+          <input type="text" id="zip" name="zip" pattern="[0-9]{5,6}" placeholder="ZIP Code" required>
+          
+          <label for="alternate">Alternate Contact:</label>
+          <input type="tel" id="alternate" name="alternate" pattern="[0-9]{10}" placeholder="10 digits">
+          
+          <div class="error-message" id="addressError"></div>
+        </fieldset>
+        <button type="button" class="prev-btn">Previous</button>
+        <button type="button" class="next-btn">Next</button>
+      </div>
+      
+      <!-- Step 4: Preferences -->
+      <div class="form-step" data-step="4">
+        <fieldset>
+          <legend>Preferences & Customization</legend>
+          
+          <label for="themeColor">Form Theme Color:</label>
+          <input type="color" id="themeColor" name="themeColor" value="#4CAF50">
+          
+          <label for="newsletter">Subscribe to Newsletter:</label>
+          <label><input type="checkbox" id="newsletter" name="newsletter"> Yes, keep me updated</label>
+          
+          <label for="campus">Preferred Campus:</label>
+          <select id="campus" name="campus">
+            <option value="">Select Campus</option>
+            <option value="main">Main Campus</option>
+            <option value="north">North Campus</option>
+            <option value="south">South Campus</option>
+          </select>
+          
+          <label for="comments">Additional Comments:</label>
+          <textarea id="comments" name="comments" rows="3" placeholder="Any additional information"></textarea>
+          
+          <div class="error-message" id="prefsError"></div>
+        </fieldset>
+        <button type="button" class="prev-btn">Previous</button>
+        <button type="submit" class="submit-btn">Submit Registration</button>
+      </div>
+    </form>
+  </div>
+  
+  <script>
+    // Multi-step form navigation
+    const form = document.getElementById('registrationForm');
+    const steps = document.querySelectorAll('.form-step');
+    const navItems = document.querySelectorAll('.form-nav li');
+    const progressBar = document.getElementById('progressBar');
+    const nextBtns = document.querySelectorAll('.next-btn');
+    const prevBtns = document.querySelectorAll('.prev-btn');
+    let currentStep = 1;
+
+    function showStep(step) {
+      steps.forEach(s => s.classList.remove('active'));
+      navItems.forEach(n => n.classList.remove('active'));
+      document.querySelector(`.form-step[data-step="${step}"]`).classList.add('active');
+      document.querySelector(`.form-nav li[data-step="${step}"]`).classList.add('active');
+      progressBar.value = step * 25;
+      currentStep = step;
+    }
+
+    nextBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (validateStep(currentStep)) {
+          showStep(currentStep + 1);
+        }
+      });
+    });
+
+    prevBtns.forEach(btn => {
+      btn.addEventListener('click', () => showStep(currentStep - 1));
+    });
+
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const step = parseInt(item.dataset.step);
+        if (validateStep(currentStep)) {
+          showStep(step);
+        }
+      });
+    });
+
+    // Form validation
+    function validateStep(step) {
+      const stepElement = document.querySelector(`.form-step[data-step="${step}"]`);
+      const inputs = stepElement.querySelectorAll('input[required], select[required], textarea[required]');
+      let valid = true;
+      const errorDiv = stepElement.querySelector('.error-message');
+      errorDiv.textContent = '';
+
+      inputs.forEach(input => {
+        if (!input.value.trim()) {
+          valid = false;
+          input.classList.add('error');
+          errorDiv.textContent = 'Please fill all required fields.';
+        } else if (input.pattern && !new RegExp(input.pattern).test(input.value)) {
+          valid = false;
+          input.classList.add('error');
+          errorDiv.textContent = `Invalid ${input.name} format.`;
+        } else {
+          input.classList.remove('error');
+        }
+      });
+
+      return valid;
+    }
+
+    // Form submission
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (validateStep(currentStep)) {
+        alert('Registration submitted successfully!');
+        form.reset();
+        showStep(1);
+        progressBar.value = 25;
+      }
+    });
+
+    // Theme color change
+    const themeColor = document.getElementById('themeColor');
+    themeColor.addEventListener('input', () => {
+      document.documentElement.style.setProperty('--theme-color', themeColor.value);
+    });
+
+    // Range slider value display
+    const rating = document.getElementById('rating');
+    const rangeValue = document.querySelector('.range-value');
+    rating.addEventListener('input', () => {
+      rangeValue.textContent = rating.value;
+    });
+
+    // Progress bar update on input
+    form.addEventListener('input', () => {
+      const inputs = Array.from(form.querySelectorAll('input, select, textarea'));
+      const filled = inputs.filter(input => input.value.trim() !== '').length;
+      const percent = (filled / inputs.length) * 100;
+      progressBar.value = Math.max(percent / 4, currentStep * 25);
+    });
+  </script>
+</body>
+</html>
